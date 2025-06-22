@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Certificate } from "@/types";
 import CertificateForm from "@/components/CertificateForm";
 import CertificatePreview from "@/components/CertificatePreview";
@@ -14,14 +14,14 @@ export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const [data, setData] = useState<Certificate>({
-    id: `NIKAH-${Date.now()}`,
+    id: "",
     groomName: "Zayn Al-Abidin",
     groomFatherName: "Yusuf Al-Abidin",
     groomAddress: "123 Iman St, Medina, SA",
     brideName: "Aaliyah Bint-Abdullah",
     brideFatherName: "Abdullah ibn-Ali",
     brideAddress: "456 Taqwa Ln, Mecca, SA",
-    nikahDate: new Date(),
+    nikahDate: undefined,
     nikahPlace: "Masjid an-Nabawi",
     mahr: "A trip to Hajj and a golden Quran",
     groomWitness1Name: "Hamza ibn-Umar",
@@ -34,6 +34,14 @@ export default function Home() {
       "In the name of Allah, the Most Gracious, the Most Merciful. With hearts full of gratitude, we celebrate the sacred union of Zayn Al-Abidin and Aaliyah Bint-Abdullah, bound by the covenant of Nikah. May their journey together be a testament to faith, a partnership of love, and a source of tranquility, blessed by Allah's infinite grace.",
     template: "classic",
   });
+
+  useEffect(() => {
+    setData((prev) => ({
+      ...prev,
+      id: `NIKAH-${Date.now()}`,
+      nikahDate: new Date(),
+    }));
+  }, []);
 
   const handleGeneratePreamble = async () => {
     if (!data.groomName || !data.brideName || !data.nikahDate || !data.nikahPlace) {
