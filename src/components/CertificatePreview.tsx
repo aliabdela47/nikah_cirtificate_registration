@@ -1,0 +1,107 @@
+"use client";
+
+import type { Certificate } from "@/types";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { format } from "date-fns";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+interface CertificatePreviewProps {
+  data: Certificate;
+}
+
+const DetailRow = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex flex-col sm:flex-row">
+    <p className="w-full sm:w-1/3 font-semibold text-foreground/80">{label}:</p>
+    <p className="w-full sm:w-2/3 font-body">{value}</p>
+  </div>
+);
+
+const SignatureLine = ({ name }: { name: string }) => (
+    <div className="mt-12 text-center">
+        <p className="border-b-2 border-dotted border-foreground/50 w-60 mx-auto">&nbsp;</p>
+        <p className="text-sm mt-2">{name}</p>
+    </div>
+)
+
+export default function CertificatePreview({ data }: CertificatePreviewProps) {
+  const templateStyles = {
+    classic: "border-primary/20",
+    modern: "border-accent",
+    floral: "border-green-500", // Placeholder for floral
+  };
+  
+  return (
+    <Card id="certificate-preview" className={cn("w-full max-w-4xl aspect-[1/1.414] bg-card p-6 md:p-10 shadow-2xl transition-all duration-300 transform md:hover:scale-105", templateStyles[data.template])}>
+      <div className={cn("w-full h-full border-2 p-4 md:p-6 flex flex-col", templateStyles[data.template])}>
+        <div className="text-center">
+          <h2 className="text-2xl font-headline tracking-wider text-primary">
+            بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+          </h2>
+          <h1 className="text-3xl md:text-4xl font-bold font-headline mt-2 text-primary tracking-tight">
+            Certificate of Nikah
+          </h1>
+          <p className="text-lg text-muted-foreground font-headline">Marriage Contract</p>
+        </div>
+
+        <p className="mt-8 text-center font-body text-md leading-relaxed">
+          {data.preamble}
+        </p>
+
+        <Separator className="my-6 bg-primary/20" />
+        
+        <div className="space-y-6 text-sm">
+            <div className="p-4 bg-primary/5 rounded-lg">
+                <h3 className="font-headline text-lg text-primary mb-3">The Groom</h3>
+                <div className="space-y-2">
+                    <DetailRow label="Name" value={data.groomName} />
+                    <DetailRow label="Father's Name" value={data.groomFatherName} />
+                    <DetailRow label="Address" value={data.groomAddress} />
+                </div>
+            </div>
+             <div className="p-4 bg-accent/5 rounded-lg">
+                <h3 className="font-headline text-lg text-accent mb-3">The Bride</h3>
+                 <div className="space-y-2">
+                    <DetailRow label="Name" value={data.brideName} />
+                    <DetailRow label="Father's Name" value={data.brideFatherName} />
+                    <DetailRow label="Address" value={data.brideAddress} />
+                </div>
+            </div>
+        </div>
+
+        <Separator className="my-6 bg-primary/20" />
+
+        <div className="space-y-2 text-sm">
+            <DetailRow label="Date of Nikah" value={data.nikahDate ? format(data.nikahDate, "EEEE, MMMM d, yyyy") : "Not set"} />
+            <DetailRow label="Place of Nikah" value={data.nikahPlace} />
+            <DetailRow label="Mahr" value={data.mahr} />
+        </div>
+
+        <div className="flex-grow" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end mt-8">
+            <div>
+                <h3 className="font-headline text-center mb-2">Witnesses</h3>
+                <div className="flex justify-around">
+                    <SignatureLine name={data.witness1Name}/>
+                    <SignatureLine name={data.witness2Name}/>
+                </div>
+            </div>
+             <div className="flex flex-col items-center">
+                <Image 
+                    src="https://placehold.co/120x120.png"
+                    data-ai-hint="islamic calligraphy"
+                    alt="Official Seal" 
+                    width={100} 
+                    height={100} 
+                    className="opacity-80"
+                />
+                <p className="text-sm mt-2 text-muted-foreground">Official Seal</p>
+             </div>
+        </div>
+        <p className="text-xs text-center text-muted-foreground mt-8">Certificate ID: {data.id}</p>
+      </div>
+    </Card>
+  );
+}
