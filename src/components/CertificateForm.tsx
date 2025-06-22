@@ -136,16 +136,35 @@ export default function CertificateForm({
           </TabsContent>
           <TabsContent value="extra" className="mt-6 space-y-6">
             <div className="space-y-4 p-4 border rounded-lg">
-                <h3 className="font-semibold font-headline text-lg text-primary">Witnesses</h3>
+                <h3 className="font-semibold font-headline text-lg text-primary">Groom's Witnesses</h3>
                 <div className="grid gap-2">
-                  <Label htmlFor="witness1Name">Witness 1 Full Name</Label>
-                  <Input id="witness1Name" name="witness1Name" value={data.witness1Name} onChange={handleInputChange} />
+                  <Label htmlFor="groomWitness1Name">Witness 1 Full Name</Label>
+                  <Input id="groomWitness1Name" name="groomWitness1Name" value={data.groomWitness1Name} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="witness2Name">Witness 2 Full Name</Label>
-                  <Input id="witness2Name" name="witness2Name" value={data.witness2Name} onChange={handleInputChange} />
+                  <Label htmlFor="groomWitness2Name">Witness 2 Full Name</Label>
+                  <Input id="groomWitness2Name" name="groomWitness2Name" value={data.groomWitness2Name} onChange={handleInputChange} />
                 </div>
-              </div>
+                 <div className="grid gap-2">
+                  <Label htmlFor="groomWitness3Name">Witness 3 Full Name</Label>
+                  <Input id="groomWitness3Name" name="groomWitness3Name" value={data.groomWitness3Name} onChange={handleInputChange} />
+                </div>
+            </div>
+            <div className="space-y-4 p-4 border rounded-lg">
+                <h3 className="font-semibold font-headline text-lg text-accent">Bride's Witnesses</h3>
+                <div className="grid gap-2">
+                  <Label htmlFor="brideWitness1Name">Witness 1 Full Name</Label>
+                  <Input id="brideWitness1Name" name="brideWitness1Name" value={data.brideWitness1Name} onChange={handleInputChange} />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="brideWitness2Name">Witness 2 Full Name</Label>
+                  <Input id="brideWitness2Name" name="brideWitness2Name" value={data.brideWitness2Name} onChange={handleInputChange} />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="brideWitness3Name">Witness 3 Full Name</Label>
+                  <Input id="brideWitness3Name" name="brideWitness3Name" value={data.brideWitness3Name} onChange={handleInputChange} />
+                </div>
+            </div>
                <div className="space-y-4 p-4 border rounded-lg">
                 <h3 className="font-semibold font-headline text-lg text-primary">Certificate Style</h3>
                 <RadioGroup value={data.template} onValueChange={handleTemplateChange}>

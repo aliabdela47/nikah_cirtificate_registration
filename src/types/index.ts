@@ -9,8 +9,12 @@ export interface Certificate {
   nikahDate: Date | undefined;
   nikahPlace: string;
   mahr: string;
-  witness1Name: string;
-  witness2Name: string;
+  groomWitness1Name: string;
+  groomWitness2Name: string;
+  groomWitness3Name: string;
+  brideWitness1Name: string;
+  brideWitness2Name: string;
+  brideWitness3Name: string;
   preamble: string;
   template: 'classic' | 'modern' | 'floral';
 }

@@ -19,8 +19,8 @@ const DetailRow = ({ label, value }: { label: string; value: string }) => (
 );
 
 const SignatureLine = ({ name }: { name: string }) => (
-    <div className="mt-12 text-center">
-        <p className="border-b-2 border-dotted border-foreground/50 w-60 mx-auto">&nbsp;</p>
+    <div className="mt-6 text-center">
+        <p className="border-b-2 border-dotted border-foreground/50 w-48 mx-auto">&nbsp;</p>
         <p className="text-sm mt-2">{name}</p>
     </div>
 )
@@ -80,22 +80,32 @@ export default function CertificatePreview({ data }: CertificatePreviewProps) {
 
         <div className="flex-grow" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end mt-8">
-            <div>
-                <h3 className="font-headline text-center mb-2">Witnesses</h3>
-                <div className="flex justify-around">
-                    <SignatureLine name={data.witness1Name}/>
-                    <SignatureLine name={data.witness2Name}/>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end mt-8">
+            <div className="md:col-span-2">
+                <h3 className="font-headline text-center mb-4">Witnesses</h3>
+                <div className="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 className="font-headline text-center mb-2 text-primary">Groom's Witnesses</h4>
+                        <SignatureLine name={data.groomWitness1Name}/>
+                        <SignatureLine name={data.groomWitness2Name}/>
+                        <SignatureLine name={data.groomWitness3Name}/>
+                    </div>
+                    <div>
+                        <h4 className="font-headline text-center mb-2 text-accent">Bride's Witnesses</h4>
+                        <SignatureLine name={data.brideWitness1Name}/>
+                        <SignatureLine name={data.brideWitness2Name}/>
+                        <SignatureLine name={data.brideWitness3Name}/>
+                    </div>
                 </div>
             </div>
-             <div className="flex flex-col items-center">
+             <div className="flex flex-col items-center justify-end h-full">
                 <Image 
                     src="https://placehold.co/120x120.png"
                     data-ai-hint="islamic calligraphy"
                     alt="Official Seal" 
                     width={100} 
                     height={100} 
-                    className="opacity-80"
+                    className="opacity-80 mt-auto"
                 />
                 <p className="text-sm mt-2 text-muted-foreground">Official Seal</p>
              </div>
