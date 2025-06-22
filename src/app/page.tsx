@@ -12,15 +12,18 @@ import { format } from "date-fns";
 export default function Home() {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const [data, setData] = useState<Certificate>({
     id: "",
     groomName: "Zayn Al-Abidin",
     groomFatherName: "Yusuf Al-Abidin",
     groomAddress: "123 Iman St, Medina, SA",
+    groomPhoto: "",
     brideName: "Aaliyah Bint-Abdullah",
     brideFatherName: "Abdullah ibn-Ali",
     brideAddress: "456 Taqwa Ln, Mecca, SA",
+    bridePhoto: "",
     nikahDate: undefined,
     nikahPlace: "Masjid an-Nabawi",
     mahr: "A trip to Hajj and a golden Quran",
@@ -41,6 +44,7 @@ export default function Home() {
       id: `NIKAH-${Date.now()}`,
       nikahDate: new Date(),
     }));
+    setIsInitialized(true);
   }, []);
 
   const handleGeneratePreamble = async () => {
@@ -89,6 +93,10 @@ export default function Home() {
       title: "Certificate Saved",
       description: "Your certificate data has been saved successfully.",
     });
+  }
+
+  if (!isInitialized) {
+    return null; // or a loading spinner
   }
 
 

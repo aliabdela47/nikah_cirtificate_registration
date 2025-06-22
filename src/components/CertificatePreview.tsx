@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { User } from "lucide-react";
 
 interface CertificatePreviewProps {
   data: Certificate;
@@ -52,20 +53,38 @@ export default function CertificatePreview({ data }: CertificatePreviewProps) {
         <Separator className="my-6 bg-primary/20" />
         
         <div className="space-y-6 text-sm">
-            <div className="p-4 bg-primary/5 rounded-lg">
-                <h3 className="font-headline text-lg text-primary mb-3">The Groom</h3>
-                <div className="space-y-2">
-                    <DetailRow label="Name" value={data.groomName} />
-                    <DetailRow label="Father's Name" value={data.groomFatherName} />
-                    <DetailRow label="Address" value={data.groomAddress} />
+            <div className="p-4 bg-primary/5 rounded-lg flex gap-4 items-center">
+                {data.groomPhoto ? (
+                    <Image src={data.groomPhoto} data-ai-hint="man portrait" alt="Groom's Photo" width={100} height={100} className="rounded-lg object-cover aspect-square" />
+                ) : (
+                    <div className="w-[100px] h-[100px] rounded-lg bg-primary/10 flex items-center justify-center text-primary/40">
+                        <User className="w-10 h-10" />
+                    </div>
+                )}
+                <div className="flex-1">
+                    <h3 className="font-headline text-lg text-primary mb-3">The Groom</h3>
+                    <div className="space-y-2">
+                        <DetailRow label="Name" value={data.groomName} />
+                        <DetailRow label="Father's Name" value={data.groomFatherName} />
+                        <DetailRow label="Address" value={data.groomAddress} />
+                    </div>
                 </div>
             </div>
-             <div className="p-4 bg-accent/5 rounded-lg">
-                <h3 className="font-headline text-lg text-accent mb-3">The Bride</h3>
-                 <div className="space-y-2">
-                    <DetailRow label="Name" value={data.brideName} />
-                    <DetailRow label="Father's Name" value={data.brideFatherName} />
-                    <DetailRow label="Address" value={data.brideAddress} />
+             <div className="p-4 bg-accent/5 rounded-lg flex gap-4 items-center">
+                 {data.bridePhoto ? (
+                    <Image src={data.bridePhoto} data-ai-hint="woman portrait" alt="Bride's Photo" width={100} height={100} className="rounded-lg object-cover aspect-square" />
+                ) : (
+                    <div className="w-[100px] h-[100px] rounded-lg bg-accent/10 flex items-center justify-center text-accent/40">
+                        <User className="w-10 h-10" />
+                    </div>
+                )}
+                <div className="flex-1">
+                    <h3 className="font-headline text-lg text-accent mb-3">The Bride</h3>
+                     <div className="space-y-2">
+                        <DetailRow label="Name" value={data.brideName} />
+                        <DetailRow label="Father's Name" value={data.brideFatherName} />
+                        <DetailRow label="Address" value={data.brideAddress} />
+                    </div>
                 </div>
             </div>
         </div>

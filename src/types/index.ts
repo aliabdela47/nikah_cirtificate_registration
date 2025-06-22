@@ -3,9 +3,11 @@ export interface Certificate {
   groomName: string;
   groomFatherName: string;
   groomAddress: string;
+  groomPhoto?: string;
   brideName: string;
   brideFatherName: string;
   brideAddress: string;
+  bridePhoto?: string;
   nikahDate: Date | undefined;
   nikahPlace: string;
   mahr: string;

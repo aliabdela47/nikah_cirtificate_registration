@@ -13,6 +13,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { CalendarIcon, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import Image from "next/image";
 
 interface CertificateFormProps {
   data: Certificate;
@@ -30,6 +31,19 @@ export default function CertificateForm({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    if (files && files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (event.target?.result) {
+          setData((prev) => ({ ...prev, [name]: event.target.result as string }));
+        }
+      };
+      reader.readAsDataURL(files[0]);
+    }
   };
 
   const handleDateChange = (date: Date | undefined) => {
@@ -69,6 +83,11 @@ export default function CertificateForm({
                   <Label htmlFor="groomAddress">Address</Label>
                   <Input id="groomAddress" name="groomAddress" value={data.groomAddress} onChange={handleInputChange} />
                 </div>
+                 <div className="grid gap-2">
+                  <Label htmlFor="groomPhoto">Photo</Label>
+                  <Input id="groomPhoto" name="groomPhoto" type="file" accept="image/*" onChange={handlePhotoChange} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"/>
+                  {data.groomPhoto && <Image src={data.groomPhoto} alt="Groom Preview" width={100} height={100} className="rounded-md object-cover aspect-square mt-2" />}
+                </div>
               </div>
               <div className="space-y-4 p-4 border rounded-lg">
                 <h3 className="font-semibold font-headline text-lg text-primary">Bride's Details</h3>
@@ -83,6 +102,11 @@ export default function CertificateForm({
                 <div className="grid gap-2">
                   <Label htmlFor="brideAddress">Address</Label>
                   <Input id="brideAddress" name="brideAddress" value={data.brideAddress} onChange={handleInputChange} />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="bridePhoto">Photo</Label>
+                  <Input id="bridePhoto" name="bridePhoto" type="file" accept="image/*" onChange={handlePhotoChange} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20"/>
+                  {data.bridePhoto && <Image src={data.bridePhoto} alt="Bride Preview" width={100} height={100} className="rounded-md object-cover aspect-square mt-2" />}
                 </div>
               </div>
             </div>
