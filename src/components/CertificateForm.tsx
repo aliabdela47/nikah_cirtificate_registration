@@ -57,7 +57,7 @@ export default function CertificateForm({
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline">Certificate Details</CardTitle>
+        <CardTitle className="font-headline">Certificate Details - Sumaqtah Addatinoona</CardTitle>
         <CardDescription>Enter the information to be included on the Nikah certificate.</CardDescription>
       </CardHeader>
       <CardContent>
