@@ -58,7 +58,7 @@ export default function CertificateForm({
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="font-headline">Certificate Details - Sumaqtah Addatinoona</CardTitle>
-        <CardDescription>Enter the information to be included on the Nikah certificate.</CardDescription>
+        <CardDescription>Nikah Sumaqtah oyta Culusa. 🙏</CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="couple">
