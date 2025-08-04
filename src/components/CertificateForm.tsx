@@ -70,41 +70,41 @@ export default function CertificateForm({
           <TabsContent value="couple" className="mt-6">
             <div className="space-y-6">
               <div className="space-y-4 p-4 border rounded-lg">
-                <h3 className="font-semibold font-headline text-lg text-primary">Groom's Details</h3>
+                <h3 className="font-semibold font-headline text-lg text-primary">Qarus Addafakoot</h3>
                 <div className="grid gap-2">
-                  <Label htmlFor="groomName">Full Name</Label>
+                  <Label htmlFor="groomName">Kibnele Migaq</Label>
                   <Input id="groomName" name="groomName" value={data.groomName} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="groomFatherName">Father's Name</Label>
+                  <Label htmlFor="groomFatherName">Abbah Migaq</Label>
                   <Input id="groomFatherName" name="groomFatherName" value={data.groomFatherName} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="groomAddress">Address</Label>
+                  <Label htmlFor="groomAddress">Guub</Label>
                   <Input id="groomAddress" name="groomAddress" value={data.groomAddress} onChange={handleInputChange} />
                 </div>
                  <div className="grid gap-2">
-                  <Label htmlFor="groomPhoto">Photo</Label>
+                  <Label htmlFor="groomPhoto">Taswiiri</Label>
                   <Input id="groomPhoto" name="groomPhoto" type="file" accept="image/*" onChange={handlePhotoChange} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"/>
                   {data.groomPhoto && <Image src={data.groomPhoto} alt="Groom Preview" width={100} height={100} className="rounded-md object-cover aspect-square mt-2" />}
                 </div>
               </div>
               <div className="space-y-4 p-4 border rounded-lg">
-                <h3 className="font-semibold font-headline text-lg text-primary">Bride's Details</h3>
+                <h3 className="font-semibold font-headline text-lg text-primary">Qibina Addafakoot</h3>
                 <div className="grid gap-2">
-                  <Label htmlFor="brideName">Full Name</Label>
+                  <Label htmlFor="brideName">Kibnele Migaq</Label>
                   <Input id="brideName" name="brideName" value={data.brideName} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="brideFatherName">Father's Name</Label>
+                  <Label htmlFor="brideFatherName">Abbah Migaq</Label>
                   <Input id="brideFatherName" name="brideFatherName" value={data.brideFatherName} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="brideAddress">Address</Label>
+                  <Label htmlFor="brideAddress">Guub</Label>
                   <Input id="brideAddress" name="brideAddress" value={data.brideAddress} onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="bridePhoto">Photo</Label>
+                  <Label htmlFor="bridePhoto">Taswiiri</Label>
                   <Input id="bridePhoto" name="bridePhoto" type="file" accept="image/*" onChange={handlePhotoChange} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20"/>
                   {data.bridePhoto && <Image src={data.bridePhoto} alt="Bride Preview" width={100} height={100} className="rounded-md object-cover aspect-square mt-2" />}
                 </div>
@@ -114,7 +114,7 @@ export default function CertificateForm({
           <TabsContent value="ceremony" className="mt-6 space-y-6">
              <div className="grid md:grid-cols-2 gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="nikahDate">Date of Nikah</Label>
+                  <Label htmlFor="nikahDate">Nikac Ayro</Label>
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button

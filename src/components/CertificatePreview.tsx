@@ -41,7 +41,7 @@ export default function CertificatePreview({ data }: CertificatePreviewProps) {
             بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
           </h2>
           <h1 className="text-3xl md:text-4xl font-bold font-headline mt-2 text-primary tracking-tight">
-            Certificate of Nikah
+            Certificate of Nikah - Nikac Sumaqta
           </h1>
           <p className="text-lg text-muted-foreground font-headline">Marriage Contract</p>
         </div>
@@ -101,7 +101,7 @@ export default function CertificatePreview({ data }: CertificatePreviewProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end mt-8">
             <div className="md:col-span-2">
-                <h3 className="font-headline text-center mb-4">Witnesses</h3>
+                <h3 className="font-headline text-center mb-4">Waditte</h3>
                 <div className="grid grid-cols-2 gap-8">
                     <div>
                         <h4 className="font-headline text-center mb-2 text-primary">Groom's Witnesses</h4>
