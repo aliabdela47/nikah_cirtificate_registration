@@ -13,7 +13,7 @@ export default function Header({ onSave, onDownload }: HeaderProps) {
       <div className="flex items-center gap-3">
         <Users className="h-7 w-7 text-primary" />
         <h1 className="text-xl md:text-2xl font-bold font-headline text-foreground tracking-tight">
-          Qafar Rakaakayak Sheriqah Cokmih Buxa
+          Qafar Rakaakayak Sheriqah Cokmih Buxak - Nikah Sumaqtah Maysarraqa
         </h1>
       </div>
     </header>
