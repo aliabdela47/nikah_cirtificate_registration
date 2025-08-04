@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import { useToast } from "@/hooks/use-toast";
 import { generatePreamble } from "@/ai/flows/generate-preamble";
 import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
+import { Save, Download } from "lucide-react";
 
 export default function Home() {
   const { toast } = useToast();
@@ -39,6 +41,7 @@ export default function Home() {
   });
 
   useEffect(() => {
+    // Set date on client to avoid hydration mismatch
     setData((prev) => ({
       ...prev,
       id: `NIKAH-${Date.now()}`,
@@ -102,10 +105,20 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-screen bg-background">
-      <Header onSave={handleSave} onDownload={handleDownload} />
+      <Header />
       <main className="flex-1 overflow-hidden">
         <div className="grid md:grid-cols-2 h-full">
           <div id="certificate-form-container" className="overflow-y-auto p-4 md:p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Button variant="outline" onClick={handleSave}>
+                <Save className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">Save</span>
+              </Button>
+              <Button onClick={handleDownload}>
+                <Download className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">Download PDF</span>
+              </Button>
+            </div>
             <CertificateForm
               data={data}
               setData={setData}

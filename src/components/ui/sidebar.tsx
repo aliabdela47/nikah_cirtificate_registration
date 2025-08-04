@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
@@ -156,12 +157,23 @@ const SidebarProvider = React.forwardRef<
 )
 SidebarProvider.displayName = "SidebarProvider"
 
-const Sidebar = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & {
-    side?: "left" | "right"
-    variant?: "sidebar" | "floating" | "inset"
-    collapsible?: "offcanvas" | "icon" | "none"
+interface SidebarProps extends React.ComponentProps<"div"> {
+ side?: "left" | "right"
+ variant?: "sidebar" | "floating" | "inset"
+ collapsible?: "offcanvas" | "icon" | "none"
+}
+
+const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
+ ({
+ side = "left",
+ variant = "sidebar",
+ collapsible = "offcanvas",
+ className,
+ children,
+ ...props
+ },
+ ref
+ ) => {
   }
 >(
   (
@@ -197,6 +209,7 @@ const Sidebar = React.forwardRef<
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
           <SheetContent
             data-sidebar="sidebar"
+ data-state={state}
             data-mobile="true"
             className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
             style={
@@ -258,6 +271,16 @@ const Sidebar = React.forwardRef<
   }
 )
 Sidebar.displayName = "Sidebar"
+
+export function Sidebar() {
+ return (
+ <SidebarMenu>
+ <SidebarMenuItem>
+ <SidebarMenuButton asChild><Link href="/dashboard">Dashboard</Link></SidebarMenuButton>
+ </SidebarMenuItem>
+ </SidebarMenu>
+ )
+}
 
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,

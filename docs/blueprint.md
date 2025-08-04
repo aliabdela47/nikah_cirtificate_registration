@@ -2,6 +2,10 @@
 
 ## Core Features:
 
+- Dashboard: Provides a central hub for managing all certificates.
+- Navigation Menu: Easy access to all sections of the application.
+- Manage Certificates: Functionality to view, edit, and delete existing certificates.
+
 - Information Input: Allow users to input bride and groom details, witnesses, date, place, and other relevant information.
 - Certificate Preview: Display all information on a preview of the certificate as it is input, for quick and iterative error-checking.
 - Preamble Generation: Generate a personalized preamble using AI based on user inputs. The AI tool will reason to incorporate relevant input facts in the preamble.
